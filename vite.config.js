@@ -10,7 +10,4 @@ export default defineConfig({
       },
     }),
   ],
-  optimizeDeps: {
-    include: ['@react-three/drei', '@react-three/fiber', 'three'],
-  },
 })
