@@ -16,7 +16,7 @@ const AnimatedSandwich = () => {
   const {
     hasBread = false,
     hasLettuce = false,
-    hasTomato = false,
+    tomatoCount = 0,
     hasCheese = false,
     hasTopBread = false,
     hasFork = false,
@@ -25,7 +25,7 @@ const AnimatedSandwich = () => {
   const showParts = {
     hasBread,
     hasLettuce,
-    hasTomato,
+    tomatoCount,
     hasCheese,
     hasTopBread,
     hasFork,
@@ -42,9 +42,9 @@ const AnimatedSandwich = () => {
   }, [hasLettuce, hasBread]);
 
   useEffect(() => {
-    if (!hasTomato || !hasBread) return;
+    if (tomatoCount === 0 || !hasBread) return;
     animateTomatoStagger(groupRef);
-  }, [hasTomato, hasBread]);
+  }, [tomatoCount, hasBread]);
 
   useEffect(() => {
     if (!hasCheese || !hasBread) return;

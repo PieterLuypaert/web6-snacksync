@@ -6,7 +6,7 @@ const StepField = ({ step, register, errors }) => {
   const {
     hasBread = false,
     hasLettuce = false,
-    hasTomato = false,
+    tomatoCount = 0,
     hasCheese = false,
     hasTopBread = false,
     hasFork = false,
@@ -71,15 +71,49 @@ const StepField = ({ step, register, errors }) => {
             <span className="ingredient-name">Kaas</span>
             {hasCheese && <span className="checkmark">✓</span>}
           </button>
-          <button
-            type="button"
-            className={`ingredient-btn ${hasTomato ? "active" : ""}`}
-            onClick={() => handleToggle("hasTomato", hasTomato)}
+
+          {/* Tomato Slider Control */}
+          <div
+            className={`ingredient-btn ${tomatoCount > 0 ? "active" : ""}`}
+            style={{
+              flexDirection: "column",
+              alignItems: "stretch",
+              cursor: "default",
+            }}
           >
-            <span className="ingredient-emoji">🍅</span>
-            <span className="ingredient-name">Tomaat</span>
-            {hasTomato && <span className="checkmark">✓</span>}
-          </button>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                marginBottom: "0.8rem",
+              }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "1.2rem",
+                }}
+              >
+                <span className="ingredient-emoji">🍅</span>
+                <span className="ingredient-name">Tomaten ({tomatoCount})</span>
+              </div>
+              {tomatoCount > 0 && <span className="checkmark">✓</span>}
+            </div>
+            <input
+              type="range"
+              min="0"
+              max="4"
+              step="1"
+              value={tomatoCount}
+              className="tomato-slider"
+              onChange={(e) =>
+                setValue("tomatoCount", parseInt(e.target.value))
+              }
+            />
+          </div>
+
           <button
             type="button"
             className={`ingredient-btn ${hasLettuce ? "active" : ""}`}
@@ -148,9 +182,10 @@ const StepField = ({ step, register, errors }) => {
                     <span>🧀</span> <span>Goudgele Kaas</span>
                   </div>
                 )}
-                {hasTomato && (
+                {tomatoCount > 0 && (
                   <div className="summary-item">
-                    <span>🍅</span> <span>Zongerijpte Tomaat</span>
+                    <span>🍅</span>{" "}
+                    <span>{tomatoCount}x Zongerijpte Tomaat</span>
                   </div>
                 )}
                 {hasLettuce && (

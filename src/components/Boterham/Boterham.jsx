@@ -95,41 +95,49 @@ export const Boterham = forwardRef(({ showParts = {} }, ref) => {
         />
       )}
 
-      {/* Tomato pieces */}
-      {showParts.hasTomato && showParts.hasBread && (
+      {/* Tomato pieces - Render based on count */}
+      {showParts.tomatoCount > 0 && showParts.hasBread && (
         <>
-          <mesh
-            ref={tomato1Ref}
-            castShadow
-            receiveShadow
-            geometry={nodes.Circle001.geometry}
-            material={materials["Material.003"]}
-            position={[1.704, 0.543, -1.971]}
-          />
-          <mesh
-            ref={tomato2Ref}
-            castShadow
-            receiveShadow
-            geometry={nodes.Circle002.geometry}
-            material={materials["Material.003"]}
-            position={[1.592, 0.546, 0.728]}
-          />
-          <mesh
-            ref={tomato3Ref}
-            castShadow
-            receiveShadow
-            geometry={nodes.Circle003.geometry}
-            material={materials["Material.003"]}
-            position={[-1.524, 0.551, -1.971]}
-          />
-          <mesh
-            ref={tomato4Ref}
-            castShadow
-            receiveShadow
-            geometry={nodes.Circle004.geometry}
-            material={materials["Material.003"]}
-            position={[-1.328, 0.538, 0.98]}
-          />
+          {showParts.tomatoCount >= 1 && (
+            <mesh
+              ref={tomato1Ref}
+              castShadow
+              receiveShadow
+              geometry={nodes.Circle001.geometry}
+              material={materials["Material.003"]}
+              position={[1.8, 0.543, -2.0]}
+            />
+          )}
+          {showParts.tomatoCount >= 2 && (
+            <mesh
+              ref={tomato2Ref}
+              castShadow
+              receiveShadow
+              geometry={nodes.Circle002.geometry}
+              material={materials["Material.003"]}
+              position={[-1.8, 0.546, 1.2]}
+            />
+          )}
+          {showParts.tomatoCount >= 3 && (
+            <mesh
+              ref={tomato3Ref}
+              castShadow
+              receiveShadow
+              geometry={nodes.Circle003.geometry}
+              material={materials["Material.003"]}
+              position={[-1.8, 0.551, -2.0]}
+            />
+          )}
+          {showParts.tomatoCount >= 4 && (
+            <mesh
+              ref={tomato4Ref}
+              castShadow
+              receiveShadow
+              geometry={nodes.Circle004.geometry}
+              material={materials["Material.003"]}
+              position={[1.8, 0.538, 1.2]}
+            />
+          )}
         </>
       )}
 

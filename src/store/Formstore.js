@@ -6,7 +6,7 @@ const useFormStore = create((set) => ({
     sandwichName: "",
     hasBread: false,
     hasLettuce: false,
-    hasTomato: false,
+    tomatoCount: 0, // Changed from hasTomato to count
     hasCheese: false,
     hasTopBread: false,
     hasFork: false,

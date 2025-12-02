@@ -3,7 +3,7 @@ export const useFormProgress = (values) => {
     let completed = 0;
     if (values.sandwichName?.length >= 3) completed += 15;
     if (values.hasBread) completed += 15;
-    if (values.hasLettuce || values.hasTomato || values.hasCheese)
+    if (values.hasLettuce || values.tomatoCount > 0 || values.hasCheese)
       completed += 20;
     if (values.hasTopBread) completed += 25;
     if (values.hasFork) completed += 25;
