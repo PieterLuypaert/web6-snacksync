@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { Boterham } from "../Boterham/Boterham";
 import useFormStore from "../../store/Formstore";
+import gsap from "gsap";
 import {
   animateBreadAppearance,
   animateLettuceAdd,
@@ -30,6 +31,13 @@ const AnimatedSandwich = () => {
     hasTopBread,
     hasFork,
   };
+
+  // Cleanup animations on unmount
+  useEffect(() => {
+    return () => {
+      gsap.killTweensOf("*");
+    };
+  }, []);
 
   useEffect(() => {
     if (!hasBread) return;

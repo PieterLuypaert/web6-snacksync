@@ -13,15 +13,26 @@ export const animateTomatoStagger = (groupRef) => {
   tomatoes.forEach((tomatoRef, index) => {
     if (!tomatoRef.current) return;
 
-    const originalY = tomatoRef.current.position.y;
+    const originalPos = {
+      x: tomatoRef.current.position.x,
+      y: tomatoRef.current.position.y,
+      z: tomatoRef.current.position.z,
+    };
 
-    // Start from high above
-    gsap.set(tomatoRef.current.position, { y: originalY + 10 });
+    // Start from high above - only change Y position
+    gsap.set(tomatoRef.current.position, {
+      x: originalPos.x,
+      y: originalPos.y + 10,
+      z: originalPos.z,
+    });
     gsap.set(tomatoRef.current.scale, { x: 0, y: 0, z: 0 });
+    gsap.set(tomatoRef.current.rotation, { x: 0, y: 0, z: 0 });
 
-    // Fall down with stagger delay
+    // Fall down with stagger delay - keep X and Z constant
     gsap.to(tomatoRef.current.position, {
-      y: originalY,
+      x: originalPos.x,
+      y: originalPos.y,
+      z: originalPos.z,
       duration: 1,
       delay: index * 0.15,
       ease: "bounce.out",
