@@ -1,14 +1,14 @@
-import './App.css'
-import Experience from './Experience'
-import Form from './components/Form/form'
-function App() {
+import "./App.css";
+import Experience from "./Experience";
+import Form from "./components/Form/Form";
 
+function App() {
   return (
     <>
-    <Experience />
-    <Form />
+      <Form />
+      <Experience />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
