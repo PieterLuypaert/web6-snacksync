@@ -51,7 +51,7 @@ const AnimatedSandwich = () => {
 
   useEffect(() => {
     if (tomatoCount === 0 || !hasBread) return;
-    animateTomatoStagger(groupRef);
+    animateTomatoStagger(groupRef, tomatoCount);
   }, [tomatoCount, hasBread]);
 
   useEffect(() => {

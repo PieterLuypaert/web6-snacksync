@@ -1,6 +1,6 @@
 import gsap from "gsap";
 
-export const animateTomatoStagger = (groupRef) => {
+export const animateTomatoStagger = (groupRef, tomatoCount) => {
   if (!groupRef || !groupRef.current) {
     console.warn("groupRef not ready for tomato animation");
     return;
@@ -9,15 +9,20 @@ export const animateTomatoStagger = (groupRef) => {
   const tomatoes = groupRef.current.tomatoes;
   if (!tomatoes) return;
 
-  // Each tomato falls down with a delay
+  // Only animate the tomatoes that are currently visible
   tomatoes.forEach((tomatoRef, index) => {
-    if (!tomatoRef.current) return;
+    if (!tomatoRef.current || index >= tomatoCount) return;
 
     const originalPos = {
       x: tomatoRef.current.position.x,
       y: tomatoRef.current.position.y,
       z: tomatoRef.current.position.z,
     };
+
+    // Kill any existing animations on this tomato
+    gsap.killTweensOf(tomatoRef.current.position);
+    gsap.killTweensOf(tomatoRef.current.scale);
+    gsap.killTweensOf(tomatoRef.current.rotation);
 
     // Start from high above - only change Y position
     gsap.set(tomatoRef.current.position, {
