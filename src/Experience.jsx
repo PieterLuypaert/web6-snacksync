@@ -27,7 +27,6 @@ const Experience = () => {
       />
 
       <AnimatedSandwich />
-
       <ContactShadows
         position={[0, -0.5, 0]}
         opacity={0.4}
