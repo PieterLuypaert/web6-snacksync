@@ -41,7 +41,7 @@ const Experience = () => {
       <OrbitControls
         enableZoom={true}
         enablePan={false}
-        maxPolarAngle={Math.PI / 2} /* Prevent going below the plate */
+        maxPolarAngle={Math.PI / 2} 
         minDistance={4}
         maxDistance={12}
       />

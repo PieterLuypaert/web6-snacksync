@@ -6,7 +6,6 @@ export const animateBreadAppearance = (groupRef) => {
     return;
   }
 
-  // Small delay to ensure ref is properly attached
   gsap.delayedCall(0.1, () => {
     if (!groupRef.current) return;
 
@@ -19,7 +18,6 @@ export const animateBreadAppearance = (groupRef) => {
         ease: "bounce.out",
         onComplete: () => {
           if (!groupRef.current) return;
-          // Celebratory spin
           gsap.to(groupRef.current.rotation, {
             y: Math.PI * 2,
             duration: 1,

@@ -86,7 +86,6 @@ const Form = () => {
                 errors={errors}
               />
 
-              {/* Hide navigation when finished */}
               {!(step === formSteps.length - 1 && values.hasFork) && (
                 <NavigationButtons
                   currentStep={step}

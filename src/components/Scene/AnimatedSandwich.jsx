@@ -32,7 +32,6 @@ const AnimatedSandwich = () => {
     hasFork,
   };
 
-  // Cleanup animations on unmount
   useEffect(() => {
     return () => {
       gsap.killTweensOf("*");

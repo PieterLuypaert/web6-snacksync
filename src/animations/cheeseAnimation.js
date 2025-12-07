@@ -36,7 +36,6 @@ export const animateCheeseThrow = (groupRef) => {
 
     const timeline = gsap.timeline({ delay: index * 0.2 });
 
-    // Scale up quickly
     timeline.to(cheeseRef.current.scale, {
       x: 1.2,
       y: 1.2,
@@ -45,7 +44,6 @@ export const animateCheeseThrow = (groupRef) => {
       ease: "back.out(2)",
     });
 
-    // Fly in with arc
     timeline.to(
       cheeseRef.current.position,
       {
@@ -58,7 +56,6 @@ export const animateCheeseThrow = (groupRef) => {
       0
     );
 
-    // Spin while flying
     timeline.fromTo(
       cheeseRef.current.rotation,
       {
@@ -72,7 +69,6 @@ export const animateCheeseThrow = (groupRef) => {
       0
     );
 
-    // Settle to normal scale
     timeline.to(
       cheeseRef.current.scale,
       {
@@ -86,7 +82,6 @@ export const animateCheeseThrow = (groupRef) => {
     );
   });
 
-  // Shake the whole sandwich when cheese lands
   gsap.to(groupRef.current.scale, {
     x: 0.52,
     y: 0.52,

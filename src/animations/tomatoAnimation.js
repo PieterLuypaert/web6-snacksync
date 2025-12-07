@@ -9,22 +9,29 @@ export const animateTomatoStagger = (groupRef, tomatoCount) => {
   const tomatoes = groupRef.current.tomatoes;
   if (!tomatoes) return;
 
-  // Only animate the tomatoes that are currently visible
   tomatoes.forEach((tomatoRef, index) => {
     if (!tomatoRef.current || index >= tomatoCount) return;
 
-    const originalPos = {
-      x: tomatoRef.current.position.x,
-      y: tomatoRef.current.position.y,
-      z: tomatoRef.current.position.z,
-    };
+    let originalPos = { x: 0, y: 0, z: 0 };
 
-    // Kill any existing animations on this tomato
+    if (
+      tomatoRef.current.userData &&
+      tomatoRef.current.userData.originalPosition
+    ) {
+      const [x, y, z] = tomatoRef.current.userData.originalPosition;
+      originalPos = { x, y, z };
+    } else {
+      originalPos = {
+        x: tomatoRef.current.position.x,
+        y: tomatoRef.current.position.y,
+        z: tomatoRef.current.position.z,
+      };
+    }
+
     gsap.killTweensOf(tomatoRef.current.position);
     gsap.killTweensOf(tomatoRef.current.scale);
     gsap.killTweensOf(tomatoRef.current.rotation);
 
-    // Start from high above - only change Y position
     gsap.set(tomatoRef.current.position, {
       x: originalPos.x,
       y: originalPos.y + 10,
@@ -33,7 +40,6 @@ export const animateTomatoStagger = (groupRef, tomatoCount) => {
     gsap.set(tomatoRef.current.scale, { x: 0, y: 0, z: 0 });
     gsap.set(tomatoRef.current.rotation, { x: 0, y: 0, z: 0 });
 
-    // Fall down with stagger delay - keep X and Z constant
     gsap.to(tomatoRef.current.position, {
       x: originalPos.x,
       y: originalPos.y,
@@ -43,7 +49,6 @@ export const animateTomatoStagger = (groupRef, tomatoCount) => {
       ease: "bounce.out",
     });
 
-    // Scale up
     gsap.to(tomatoRef.current.scale, {
       x: 1,
       y: 1,
@@ -53,7 +58,6 @@ export const animateTomatoStagger = (groupRef, tomatoCount) => {
       ease: "back.out(1.7)",
     });
 
-    // Rotation for fun
     gsap.to(tomatoRef.current.rotation, {
       z: Math.PI * 2,
       duration: 1,
@@ -62,12 +66,5 @@ export const animateTomatoStagger = (groupRef, tomatoCount) => {
     });
   });
 
-  // Wiggle the whole sandwich
-  gsap.to(groupRef.current.rotation, {
-    z: 0.1,
-    duration: 0.2,
-    yoyo: true,
-    repeat: 3,
-    ease: "power2.inOut",
-  });
+ 
 };

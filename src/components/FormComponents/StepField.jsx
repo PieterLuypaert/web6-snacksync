@@ -44,7 +44,6 @@ const StepField = ({ step, register, errors }) => {
             className={`ingredient-btn ${hasBread ? "active" : ""}`}
             onClick={() => handleToggle("hasBread", hasBread)}
           >
-            <span className="ingredient-emoji">🍞</span>
             <span className="ingredient-name">Onderste Brood</span>
             {hasBread && <span className="checkmark">✓</span>}
           </button>
@@ -67,12 +66,10 @@ const StepField = ({ step, register, errors }) => {
             className={`ingredient-btn ${hasCheese ? "active" : ""}`}
             onClick={() => handleToggle("hasCheese", hasCheese)}
           >
-            <span className="ingredient-emoji">🧀</span>
             <span className="ingredient-name">Kaas</span>
             {hasCheese && <span className="checkmark">✓</span>}
           </button>
 
-          {/* Tomato Slider Control */}
           <div
             className={`ingredient-btn ${tomatoCount > 0 ? "active" : ""}`}
             style={{
@@ -96,7 +93,6 @@ const StepField = ({ step, register, errors }) => {
                   gap: "1.2rem",
                 }}
               >
-                <span className="ingredient-emoji">🍅</span>
                 <span className="ingredient-name">Tomaten ({tomatoCount})</span>
               </div>
               {tomatoCount > 0 && <span className="checkmark">✓</span>}
@@ -119,7 +115,6 @@ const StepField = ({ step, register, errors }) => {
             className={`ingredient-btn ${hasLettuce ? "active" : ""}`}
             onClick={() => handleToggle("hasLettuce", hasLettuce)}
           >
-            <span className="ingredient-emoji">🥬</span>
             <span className="ingredient-name">Sla</span>
             {hasLettuce && <span className="checkmark">✓</span>}
           </button>
@@ -134,7 +129,6 @@ const StepField = ({ step, register, errors }) => {
             className={`ingredient-btn ${hasTopBread ? "active" : ""}`}
             onClick={() => handleToggle("hasTopBread", hasTopBread)}
           >
-            <span className="ingredient-emoji">🍞</span>
             <span className="ingredient-name">Bovenste Brood</span>
             {hasTopBread && <span className="checkmark">✓</span>}
           </button>
@@ -158,7 +152,6 @@ const StepField = ({ step, register, errors }) => {
               className={`ingredient-btn ${hasFork ? "active" : ""}`}
               onClick={() => handleToggle("hasFork", hasFork)}
             >
-              <span className="ingredient-emoji">🍴</span>
               <span className="ingredient-name">Voeg vork toe</span>
             </button>
           )}
@@ -175,31 +168,31 @@ const StepField = ({ step, register, errors }) => {
 
               <div className="ingredients-summary">
                 <div className="summary-item">
-                  <span>🍞</span> <span>Crunchy Bodem</span>
+                 <span>Crunchy Bodem</span>
                 </div>
                 {hasCheese && (
                   <div className="summary-item">
-                    <span>🧀</span> <span>Goudgele Kaas</span>
+                    <span>Goudgele Kaas</span>
                   </div>
                 )}
                 {tomatoCount > 0 && (
                   <div className="summary-item">
-                    <span>🍅</span>{" "}
+                    {" "}
                     <span>{tomatoCount}x Zongerijpte Tomaat</span>
                   </div>
                 )}
                 {hasLettuce && (
                   <div className="summary-item">
-                    <span>🥬</span> <span>Verse Sla</span>
+                    <span>Verse Sla</span>
                   </div>
                 )}
                 {hasTopBread && (
                   <div className="summary-item">
-                    <span>🍞</span> <span>De Kroon</span>
+                    <span>De Kroon</span>
                   </div>
                 )}
                 <div className="summary-item">
-                  <span>🍴</span> <span>Finishing Touch</span>
+                  <span>Finishing Touch</span>
                 </div>
               </div>
 

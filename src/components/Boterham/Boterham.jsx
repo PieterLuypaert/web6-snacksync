@@ -14,7 +14,6 @@ export const Boterham = forwardRef(({ showParts = {} }, ref) => {
 
   const forkRef = useRef();
 
-  // Export refs so parent can animate them
   React.useImperativeHandle(ref, () => ({
     group: ref,
     tomatoes: [tomato1Ref, tomato2Ref, tomato3Ref, tomato4Ref],
@@ -24,7 +23,6 @@ export const Boterham = forwardRef(({ showParts = {} }, ref) => {
 
   return (
     <group ref={ref} dispose={null}>
-      {/* Plate - always visible */}
       <mesh
         castShadow
         receiveShadow={false}
@@ -34,7 +32,6 @@ export const Boterham = forwardRef(({ showParts = {} }, ref) => {
         scale={[6.325, 0.107, 6.325]}
       />
 
-      {/* Bottom Bread */}
       {showParts.hasBread && (
         <group
           position={[0, 0.169, -0.265]}
@@ -56,7 +53,6 @@ export const Boterham = forwardRef(({ showParts = {} }, ref) => {
         </group>
       )}
 
-      {/* Cheese layer */}
       {showParts.hasCheese && showParts.hasBread && (
         <>
           <mesh
@@ -82,7 +78,6 @@ export const Boterham = forwardRef(({ showParts = {} }, ref) => {
         </>
       )}
 
-      {/* Lettuce layer */}
       {showParts.hasLettuce && showParts.hasBread && (
         <mesh
           castShadow
@@ -95,12 +90,12 @@ export const Boterham = forwardRef(({ showParts = {} }, ref) => {
         />
       )}
 
-      {/* Tomato pieces - Render based on count */}
       {showParts.tomatoCount > 0 && showParts.hasBread && (
         <>
           {showParts.tomatoCount >= 1 && (
             <mesh
               ref={tomato1Ref}
+              userData={{ originalPosition: [1.8, 0.543, -2.0] }}
               castShadow
               receiveShadow
               geometry={nodes.Circle001.geometry}
@@ -111,6 +106,7 @@ export const Boterham = forwardRef(({ showParts = {} }, ref) => {
           {showParts.tomatoCount >= 2 && (
             <mesh
               ref={tomato2Ref}
+              userData={{ originalPosition: [-1.8, 0.546, 1.2] }}
               castShadow
               receiveShadow
               geometry={nodes.Circle002.geometry}
@@ -121,6 +117,7 @@ export const Boterham = forwardRef(({ showParts = {} }, ref) => {
           {showParts.tomatoCount >= 3 && (
             <mesh
               ref={tomato3Ref}
+              userData={{ originalPosition: [-1.8, 0.551, -2.0] }}
               castShadow
               receiveShadow
               geometry={nodes.Circle003.geometry}
@@ -131,6 +128,7 @@ export const Boterham = forwardRef(({ showParts = {} }, ref) => {
           {showParts.tomatoCount >= 4 && (
             <mesh
               ref={tomato4Ref}
+              userData={{ originalPosition: [1.8, 0.538, 1.2] }}
               castShadow
               receiveShadow
               geometry={nodes.Circle004.geometry}
@@ -141,7 +139,6 @@ export const Boterham = forwardRef(({ showParts = {} }, ref) => {
         </>
       )}
 
-      {/* Top Bread */}
       {showParts.hasTopBread && showParts.hasBread && (
         <group
           position={[0, -0.901, -0.259]}
@@ -163,7 +160,6 @@ export const Boterham = forwardRef(({ showParts = {} }, ref) => {
         </group>
       )}
 
-      {/* Fork - show when hasFork is true */}
       {showParts.hasFork && (
         <mesh
           ref={forkRef}
