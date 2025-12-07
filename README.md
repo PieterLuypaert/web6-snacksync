@@ -1,18 +1,53 @@
-# React + Vite
+# SnackSync - Interactieve Boterham Bouwer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Concept
 
-Currently, two official plugins are available:
+**SnackSync** is een interactieve 3D webapplicatie waarmee gebruikers stap voor stap hun eigen virtuele boterham kunnen samenstellen. De applicatie combineert een intuïtief formulier met real-time 3D visualisatie en speelse animaties.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Wat maakt dit project uniek?
 
-## React Compiler
+- **Synchrone ervaring**: Terwijl je ingrediënten selecteert in het formulier, zie je direct de 3D boterham groeien met vloeiende animaties
+- **Stapsgewijze opbouw**: Van brood → beleg → top → finishing touch (vork!)
+- **Speelse GSAP animaties**: Elk ingrediënt heeft zijn eigen unieke animatie (bounce, throw, spin, stagger)
+- **Moderne tech stack**: React 19, Three.js/R3F, Zustand state management, GSAP animaties
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+## Features
 
-Note: This will impact Vite dev & build performances.
+-  Interactief stappenformulier met validatie
+-  Real-time 3D preview van je boterham
+-  Vloeiende animaties per ingrediënt
+-  Voortgangsbalk die je creatie volgt
+-  Responsive design
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+| Technologie       | Gebruik            |
+| ----------------- | ------------------ |
+| React 19          | UI Framework       |
+| React Three Fiber | 3D rendering       |
+| Three.js          | 3D graphics        |
+| GSAP              | Animaties          |
+| Zustand           | State management   |
+| React Hook Form   | Formulier handling |
+| Vite              | Build tool         |
+
+## Installatie
+
+```bash
+npm install
+npm run dev
+```
+
+## Structuur
+
+```
+src/
+├── components/
+│   ├── Boterham/      # 3D model component
+│   ├── Form/          # Hoofdformulier
+│   ├── FormComponents/ # Herbruikbare form onderdelen
+│   └── Scene/         # 3D scene met animaties
+├── animations/        # GSAP animatie functies
+├── store/            # Zustand state management
+└── Experience.jsx    # Three.js Canvas setup
+```
