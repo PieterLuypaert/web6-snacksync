@@ -22,7 +22,6 @@ const Experience = () => {
       <spotLight
         position={[0, 10, 0]}
         angle={0.5}
-        penumbra={1}
         intensity={1}
         castShadow
       />
